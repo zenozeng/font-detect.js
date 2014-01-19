@@ -1,0 +1,19 @@
+<head>
+</head>
+<script src="font-detect.js"></script>
+<body></body>
+<script>
+ fontDetect('WenQuanYi Micro Hei', function(result) {
+     console.log(result); 
+ });
+ fontDetect('helloworld', function(result) {
+     console.log(result); 
+ });
+ fontDetect('WenQuanYi Micro Hei', function(result) {
+     console.log(result); 
+ });
+ var arr = ['WenQuanYi Micro Hei', 'WenQuanYi Zen Hei Mono', 'WenQuanYi Micro Hei Mono', 'xxx'];
+ fontDetect(arr, function(result) {
+     console.log(result); 
+ });
+</script>
