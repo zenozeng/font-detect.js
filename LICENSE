@@ -1,33 +1,3 @@
-# Font-Detect.js
-
-Detect Font using Javascript & @font-face.
-
-## Introduction
-
-Here is the brief introduction.
-
-Suppose I want to test whether `WenQuanYi Micro Hei` is installed.
-I insert a inline block `<div id="font-detect-test-block">0</div>` to body and set its font-family to `"WenQuanYi Micro Hei", font-detect-0-woff`. Font-detect-0-woff (only 1KB and only contains `0`) is a special font I made, the width of char `0` in this font is 0. So if `WenQuanYi Micro Hei` is installed the width of the inline block should be greater than 0 else it is 0.
-
-## Usage
-
-```
-fontDetect('WenQuanYi Micro Hei', function(result) {
-    console.log(result); 
-});
-// true
-```
-```
-fontDetect(['WenQuanYi Micro Hei', 'WenQuanYi Zen Hei Mono', 'not Exist fonts', 'WenQuanYi Micro Hei Mono'], function(result) {
-    console.log(result); 
-});
-// Object {WenQuanYi Micro Hei: true, WenQuanYi Zen Hei Mono: true, not Exist fonts: false, WenQuanYi Micro Hei Mono: true} 
-```
-
-And it could be used with requireJS.
-
-## License
-
 The MIT License (MIT)
 
 Copyright (c) 2014 Zeno Zeng
