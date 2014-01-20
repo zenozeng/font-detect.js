@@ -18,10 +18,10 @@ fontDetect('WenQuanYi Micro Hei', function(result) {
 // true
 ```
 ```
-fontDetect(['WenQuanYi Micro Hei', 'WenQuanYi Zen Hei Mono', 'not Exist fonts', 'WenQuanYi Micro Hei Mono'], function(result) {
+fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], function(result) {
     console.log(result); 
 });
-// Object {WenQuanYi Micro Hei: true, WenQuanYi Zen Hei Mono: true, not Exist fonts: false, WenQuanYi Micro Hei Mono: true} 
+// Object {WenQuanYi Micro Hei: true, not Exist fonts: false}
 ```
 
 And it could be used with requireJS.
