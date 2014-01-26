@@ -26,6 +26,23 @@ fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], function(result) {
 
 And it could be used with requireJS.
 
+## Known Issue
+
+### Arial / Helvetica
+
+In Linux, some safe fonts are mapped using `alias binding="same"`
+```
+$ fc-match Arial 
+LiberationSans-Regular.ttf: "Liberation Sans" "Regular"
+```
+
+Defined in /etc/fonts/conf.d/30-metric-aliases.conf (debian jessie/sid)
+What this conf did is alias similar/metric-compatible families from various sources.
+
+I think this is not a serious issue, because the orginal and the fallback are very similar. And could be considered to be the same.
+
+If you must, maybe you can use canvas and compare pixel by pixel to detect whether these fonts are installed.
+
 ## License
 
 The MIT License (MIT)
