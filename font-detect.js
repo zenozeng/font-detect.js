@@ -45,7 +45,11 @@
             }
         };
 
-        var detect = function(fontNameorList, callback) {
+        var detect = function(fontNameorList, asArray, callback) {
+            if(!callback) {
+                callback = asArray;
+                asArray = false;
+            }
             if(!isInit) {
                 init();
             }
@@ -56,10 +60,20 @@
                     return elem.clientWidth > 0;
                 };
                 var detectFonts= function(fontsArray) {
-                    var fonts = {};
+                    var font, fonts, test;
+                    if(asArray) {
+                        fonts = [];
+                    } else {
+                        fonts = {};
+                    }
                     for(var i = 0; i < fontsArray.length; i++) {
-                        var font = fontsArray[i];
-                        fonts[font] = detectFont(font);
+                        font = fontsArray[i];
+                        test = detectFont(font);
+                        if(asArray) {
+                            fonts.push(test);
+                        } else {
+                            fonts[font] = test;
+                        }
                     }
                     return fonts;
                 };
