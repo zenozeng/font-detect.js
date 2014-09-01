@@ -3,7 +3,7 @@ woff = "data:font/woff;charset=utf-8;base64,d09GRk9UVE8AAAQYAAoAAAAABlwAAQAAAAAA
 css = """
 @font-face{
     font-family: font-detect-0-woff;
-    src:url(data:font/woff;charset=utf-8;base64,#{woff}) format('woff');
+    src:url(#{woff}) format('woff');
 }
 #font-detect-test-block{display:inline-block;position:fixed;left:-100%;}
 """
@@ -13,6 +13,7 @@ inject = ->
     unless elem?
         elem = document.createElement 'div'
         elem.id = 'font-detect-test-block'
+        elem.innerHTML = '0'
         document.body.appendChild elem
 
     sheet = document.getElementById 'font-detect-styles'
@@ -42,9 +43,11 @@ detectFonts = (fonts, callback) ->
         elem = document.getElementById 'font-detect-test-block'
         results = []
         for font in fonts
-            elem.style.fontFamily = '"#{font}", font-detect-0-woff'
+            elem.style.fontFamily = "'#{font}', font-detect-0-woff"
             results.push(elem.clientWidth > 0)
-        callback(results)
-        remove()
+            console.log font, elem.clientWidth
+        err = null
+        callback err, results
+        # remove()
 
-module.export = detectFonts
+module.exports = detectFonts

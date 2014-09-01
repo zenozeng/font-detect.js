@@ -2,12 +2,11 @@ var fonts = '"Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sa
 
 // don't use forEach
 // this test have to be runned in IE6
-for(var i = 0; i < fonts.length; i++) {
-    var font = fonts[i];
-    (function(font) {
-        fontDetect(font, function(err, available) {
-            available = available ? "True" : "False";
-            document.body.innerHTML += '<span>' + font + '</span>: ' + available + '<br>';
-        });
-    })(font);
-};
+fontDetect(fonts, function(err, results) {
+    for(var i = 0; i < results.length; i++) {
+        var available = results[i],
+            font = fonts[i];
+        available = available ? "True" : "False";
+        document.body.innerHTML += '<span>' + font + '</span>: ' + available + '<br>';
+    }
+});
