@@ -2,7 +2,7 @@
 
 Detect Font using Javascript & @font-face.
 
-**Support for IE may come later.**
+**Tested in Chrome 36 & Firefox 31. Does not support IE 6/7/8**
 
 ## Introduction
 
@@ -33,18 +33,6 @@ fontDetector.detect(fonts, function(err, results) {
     }
 });
 ```
-
-### Eot Support
-
-For IE 6/7/8, you have to pass eot path to FontDetector.
-
-Copy src/0.eot to you path.
-
-```javascript
-var fontDetector = new FontDetector({eot: "YOUR EOT PATH TO YOUR PAGE"});
-```
-
-see also: test/test.js
 
 ## Known Issue
 

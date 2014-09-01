@@ -9,17 +9,12 @@
     function FontDetector(opts) {
       this.ready = __bind(this.ready, this);
       var src;
-      if (!(opts && opts.eot)) {
-        src = "src: url(" + woff + ") format('woff');";
-      } else {
-        src = "src: url('" + opts.eot + "'); /* IE9 Compat Modes */\nsrc: url('" + opts.eot + "?#iefix') format('embedded-opentype'), /* IE6-IE8 */\n     url(" + woff + ") format('woff');";
-        src = "url('" + opts.eot + "?#iefix') format('embedded-opentype');";
-      }
+      src = "src: url(" + woff + ") format('woff');";
       this.css = "@font-face {\n    font-family: font-detect-0-woff;\n    " + src + "\n}\n#font-detect-test-block {\n    display: inline-block;\n    position: fixed;\n    left: -100%;\n}";
     }
 
     FontDetector.prototype.inject = function() {
-      var elem, head, sheet, textnode;
+      var elem, head, sheet;
       elem = document.getElementById('font-detect-test-block');
       if (elem == null) {
         elem = document.createElement('div');
@@ -32,13 +27,7 @@
         sheet = document.createElement('style');
         sheet.setAttribute('type', 'text/css');
         sheet.id = 'font-detect-styles';
-        alert(this.css);
-        if (sheet.styleSheet) {
-          sheet.styleSheet.cssText = this.css;
-        } else {
-          textnode = document.createTextNode(this.css);
-          sheet.appendChild(textnode);
-        }
+        sheet.innerHTML = this.css;
         head = document.getElementsByTagName('head')[0];
         return head.appendChild(sheet);
       }
@@ -60,9 +49,7 @@
       var elem;
       this.inject();
       elem = document.getElementById('font-detect-test-block');
-      alert(elem.clientWidth);
       elem.style.fontFamily = 'font-detect-0-woff';
-      alert(elem.clientWidth);
       if (elem.clientWidth > 0) {
         return setTimeout(((function(_this) {
           return function() {
@@ -70,7 +57,6 @@
           };
         })(this)), 50);
       } else {
-        alert('ready');
         return callback();
       }
     };

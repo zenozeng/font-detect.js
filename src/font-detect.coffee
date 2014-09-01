@@ -3,15 +3,7 @@ woff = "data:font/woff;charset=utf-8;base64,d09GRk9UVE8AAAQYAAoAAAAABlwAAQAAAAAA
 class FontDetector
 
     constructor: (opts) ->
-        unless opts and opts.eot
-            src = "src: url(#{woff}) format('woff');"
-        else
-            src = """
-                src: url('#{opts.eot}'); /* IE9 Compat Modes */
-                src: url('#{opts.eot}?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-                     url(#{woff}) format('woff');"""
-            src = "url('#{opts.eot}?#iefix') format('embedded-opentype');"
-
+        src = "src: url(#{woff}) format('woff');"
         @css = """
             @font-face {
                 font-family: font-detect-0-woff;
@@ -38,13 +30,7 @@ class FontDetector
             sheet = document.createElement 'style'
             sheet.setAttribute 'type', 'text/css'
             sheet.id = 'font-detect-styles'
-            # todo: check this
-            alert @css
-            if sheet.styleSheet
-                sheet.styleSheet.cssText = @css
-            else
-                textnode = document.createTextNode @css
-                sheet.appendChild textnode
+            sheet.innerHTML = @css
             head = document.getElementsByTagName('head')[0]
             head.appendChild sheet
 
@@ -59,13 +45,10 @@ class FontDetector
     ready: (callback) =>
         @inject()
         elem = document.getElementById 'font-detect-test-block'
-        alert elem.clientWidth
         elem.style.fontFamily = 'font-detect-0-woff'
-        alert elem.clientWidth
         if elem.clientWidth > 0
             setTimeout (=> @ready callback), 50
         else
-            alert 'ready'
             callback()
 
     detect: (fonts, callback) ->
