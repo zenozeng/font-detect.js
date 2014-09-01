@@ -78,9 +78,9 @@
                     return fonts;
                 };
                 if(typeof fontNameorList === "string") {
-                    callback(detectFont(fontNameorList));
+                    callback(null, detectFont(fontNameorList));
                 } else {
-                    callback(detectFonts(fontNameorList));
+                    callback(null, detectFonts(fontNameorList));
                 }
             });
         };
