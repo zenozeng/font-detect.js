@@ -18,28 +18,12 @@ When document is ready,
 use the following code to detect fonts.
 
 ```
-fontDetect('WenQuanYi Micro Hei', function(result) {
-    console.log(result); 
-});
-// true
-```
-
-```
-fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], function(result) {
-    console.log(result); 
-});
-// Object {WenQuanYi Micro Hei: true, not Exist fonts: false}
-```
-
-```
 // return as array
-fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], true, function(result) {
-    console.log(result); 
+fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], function(err, results) {
+    console.log(results); 
 });
-// [true, true, false, true]
+// [true, false]
 ```
-
-And it could be used with requireJS.
 
 ## Known Issue
 
