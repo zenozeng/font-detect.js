@@ -2,6 +2,8 @@
 
 Detect Font using Javascript & @font-face.
 
+**Support for IE may come later.**
+
 ## Introduction
 
 Here is the brief introduction.
@@ -34,8 +36,7 @@ fontDetector.detect(fonts, function(err, results) {
 
 ### Eot Support
 
-IE 6 & IE 7 doesn't support Data URI, thus,
-you have to pass eot path to FontDetector.
+For IE 6/7/8, you have to pass eot path to FontDetector.
 
 Copy src/0.eot to you path.
 
