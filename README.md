@@ -2,7 +2,7 @@
 
 Detect Font using Javascript & @font-face.
 
-**Tested in Chrome 36 & Firefox 31. Does not support IE 6/7/8**
+**Tested in Chrome 36 & Firefox 31. Does not support IE 6/7/8.**
 
 ## Introduction
 
