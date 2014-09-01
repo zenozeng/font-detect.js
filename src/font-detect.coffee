@@ -35,9 +35,15 @@ class FontDetector
         sheet = document.getElementById 'font-detect-styles'
         unless sheet?
             sheet = document.createElement 'style'
+            sheet.setAttribute 'type', 'text/css'
             sheet.id = 'font-detect-styles'
-            sheet.innerHTML = @css
-            document.body.appendChild sheet
+            if sheet.styleSheet
+                sheet.styleSheet.cssText = @css
+            else
+                textnode = document.createTextNode @css
+                sheet.appendChild textnode
+            head = document.getElementsByTagName('head')[0]
+            head.appendChild sheet
 
     # @private
     remove: ->

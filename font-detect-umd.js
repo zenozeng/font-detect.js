@@ -18,7 +18,7 @@
     }
 
     FontDetector.prototype.inject = function() {
-      var elem, sheet;
+      var elem, head, sheet, textnode;
       elem = document.getElementById('font-detect-test-block');
       if (elem == null) {
         elem = document.createElement('div');
@@ -29,9 +29,16 @@
       sheet = document.getElementById('font-detect-styles');
       if (sheet == null) {
         sheet = document.createElement('style');
+        sheet.setAttribute('type', 'text/css');
         sheet.id = 'font-detect-styles';
-        sheet.innerHTML = this.css;
-        return document.body.appendChild(sheet);
+        if (sheet.styleSheet) {
+          sheet.styleSheet.cssText = this.css;
+        } else {
+          textnode = document.createTextNode(this.css);
+          sheet.appendChild(textnode);
+        }
+        head = document.getElementsByTagName('head')[0];
+        return head.appendChild(sheet);
       }
     };
 
