@@ -3,7 +3,7 @@
 
         var insertRule = function(rule) {
             document.body.innerHTML += '<style>'+rule+'</style>';
-        }
+        };
 
         // Init, append Font & CSS
         var isInit = false;

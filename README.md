@@ -9,7 +9,13 @@ Here is the brief introduction.
 Suppose I want to test whether `WenQuanYi Micro Hei` is installed.
 I insert a inline block `<div id="font-detect-test-block">0</div>` to body and set its font-family to `"WenQuanYi Micro Hei", font-detect-0-woff`. Font-detect-0-woff (only 1KB and only contains `0`) is a special font I made, the width of char `0` in this font is 0. So if `WenQuanYi Micro Hei` is installed the width of the inline block should be greater than 0 else it is 0.
 
+Note: `0.woff` was encoded as a base64 string and was defined in font-detect.js.
+
 ## Usage
+
+Simply include font-detect.js.
+When document is ready,
+use the following code to detect fonts.
 
 ```
 fontDetect('WenQuanYi Micro Hei', function(result) {
