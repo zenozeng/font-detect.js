@@ -20,14 +20,23 @@ use the `fontDetect` to detect fonts.
 ```javascript
 var fonts = '"Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "Hiragino Sans GB", "Source Han Sans CN Normal", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp"'.replace(/"/g, '').split(', ');
 
-fontDetect(fonts, function(err, results) {
+var fontDetector = new FontDetector();
+
+fontDetector.detect(fonts, function(err, results) {
     for(var i = 0; i < results.length; i++) {
         var available = results[i],
             font = fonts[i];
-        console.log(available, font);
+        available = available ? "True" : "False";
+        document.body.innerHTML += '<span>' + font + '</span>: ' + available + '<br>';
     }
 });
 ```
+
+### Eot Support
+
+IE 6 & IE 7 doesn't support Data URI, thus,
+you have to pass eot path to fontDetect.
+
 
 ## Known Issue
 
