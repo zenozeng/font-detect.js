@@ -4,14 +4,24 @@ class FontDetector
 
     constructor: (opts) ->
         unless opts and opts.eot
-            @css = """
-                @font-face{
-                    font-family: font-detect-0-woff;
-                    src:url(#{woff}) format('woff');
-                }
-                #font-detect-test-block{display:inline-block;position:fixed;left:-100%;}"""
+            src = "src: url(#{woff}) format('woff');"
         else
-            throw new Error('eot!')
+            src = """
+                src: url('#{opts.eot}'); /* IE9 Compat Modes */
+                src: url('#{opts.eot}?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                     url(#{woff}) format('woff');"""
+
+        @css = """
+            @font-face {
+                font-family: font-detect-0-woff;
+                #{src}
+            }
+            #font-detect-test-block {
+                display: inline-block;
+                position: fixed;
+                left: -100%;
+            }
+            """
 
     # @private
     inject: ->

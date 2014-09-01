@@ -7,11 +7,13 @@
   FontDetector = (function() {
     function FontDetector(opts) {
       this.ready = __bind(this.ready, this);
+      var src;
       if (!(opts && opts.eot)) {
-        this.css = "@font-face{\n    font-family: font-detect-0-woff;\n    src:url(" + woff + ") format('woff');\n}\n#font-detect-test-block{display:inline-block;position:fixed;left:-100%;}";
+        src = "src: url(" + woff + ") format('woff');";
       } else {
-        throw new Error('eot!');
+        src = "src: url('" + opts.eot + "'); /* IE9 Compat Modes */\nsrc: url('" + opts.eot + "?#iefix') format('embedded-opentype'), /* IE6-IE8 */\n     url(" + woff + ") format('woff');";
       }
+      this.css = "@font-face {\n    font-family: font-detect-0-woff;\n    " + src + "\n}\n#font-detect-test-block {\n    display: inline-block;\n    position: fixed;\n    left: -100%;\n}";
     }
 
     FontDetector.prototype.inject = function() {

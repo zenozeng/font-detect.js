@@ -35,8 +35,15 @@ fontDetector.detect(fonts, function(err, results) {
 ### Eot Support
 
 IE 6 & IE 7 doesn't support Data URI, thus,
-you have to pass eot path to fontDetect.
+you have to pass eot path to FontDetector.
 
+Copy src/0.eot to you path.
+
+```javascript
+var fontDetector = new FontDetector({eot: "YOUR EOT PATH TO YOUR PAGE"});
+```
+
+see also: test/test.js
 
 ## Known Issue
 
