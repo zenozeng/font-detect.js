@@ -13,16 +13,20 @@ Note: `0.woff` was encoded as a base64 string and was defined in font-detect.js.
 
 ## Usage
 
-Simply include font-detect.js.
+Simply include font-detect-umd.js.
 When document is ready,
-use the following code to detect fonts.
+use the `fontDetect` to detect fonts.
 
-```
-// return as array
-fontDetect(['WenQuanYi Micro Hei', 'not Exist fonts'], function(err, results) {
-    console.log(results); 
+```javascript
+var fonts = '"Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "Hiragino Sans GB", "Source Han Sans CN Normal", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp"'.replace(/"/g, '').split(', ');
+
+fontDetect(fonts, function(err, results) {
+    for(var i = 0; i < results.length; i++) {
+        var available = results[i],
+            font = fonts[i];
+        console.log(available, font);
+    }
 });
-// [true, false]
 ```
 
 ## Known Issue

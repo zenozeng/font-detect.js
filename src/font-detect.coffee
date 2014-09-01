@@ -38,7 +38,7 @@ ready = (callback) ->
     else
         callback()
 
-detectFonts = (fonts, callback) ->
+fontDetect = (fonts, callback) ->
     ready ->
         elem = document.getElementById 'font-detect-test-block'
         results = []
@@ -48,6 +48,6 @@ detectFonts = (fonts, callback) ->
             console.log font, elem.clientWidth
         err = null
         callback err, results
-        # remove()
+        remove()
 
-module.exports = detectFonts
+module.exports = fontDetect
