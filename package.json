@@ -1,0 +1,22 @@
+{
+  "name": "font-detect",
+  "version": "1.0.0",
+  "description": "Detect Font using Javascript & @font-face.",
+  "main": "font-detect-cmd.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenozeng/font-detect.js.git"
+  },
+  "author": "Zeno Zeng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zenozeng/font-detect.js/issues"
+  },
+  "homepage": "https://github.com/zenozeng/font-detect.js#readme"
+}
